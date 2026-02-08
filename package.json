@@ -1,0 +1,63 @@
+{
+  "name": "easy-pip",
+  "version": "1.0.7",
+  "description": "A visual PIP package manager",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "concurrently \"vite\" \"wait-on http://localhost:5173 && cross-env NODE_ENV=development electron .\"",
+    "clean": "rimraf build",
+    "build": "vite build",
+    "pack": "npm run clean && vite build && electron-builder --dir",
+    "dist": "npm run clean && vite build && electron-builder",
+    "lint": "eslint src --ext .js,.jsx --fix",
+    "type-check": "tsc --noEmit --jsx react-jsx"
+  },
+  "keywords": [
+    "pip",
+    "python",
+    "gui",
+    "electron",
+    "react"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@vitejs/plugin-react": "^5.1.2",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "electron": "^40.0.0",
+    "electron-builder": "^26.4.0",
+    "rimraf": "^6.1.2",
+    "vite": "^7.3.1",
+    "wait-on": "^9.0.3"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.1.0",
+    "antd": "^6.2.1",
+    "dayjs": "^1.11.19",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3",
+    "recharts": "^3.7.0"
+  },
+  "build": {
+    "appId": "com.easypip.app",
+    "productName": "Easy Pip",
+    "directories": {
+      "output": "dist-build-v17"
+    },
+    "files": [
+      "dist/**/*",
+      "electron/**/*"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    }
+  }
+}
