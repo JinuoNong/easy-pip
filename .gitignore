@@ -1,0 +1,6 @@
+node_modules/
+dist/
+dist-build-v17/
+*.log
+.DS_Store
+*.tgz
